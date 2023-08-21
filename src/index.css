@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Fira Code',Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  background-color: #fafafa;
+}
+#root {
+  height: 100vh;
+  display: flex;
+  padding: 42px 36px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+input[type="range"]::-webkit-slider-thumb {
+  width: 0px;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 46px;
+  cursor: ew-resize;
+  background: #FFF;
+  box-shadow: -400px 0 0 400px #d1d1d1;
+  border-radius: 50%;
+}
+input[type='number'] {
+  outline: none;
+  border-bottom: 1px solid #d1d1d1;
+}
