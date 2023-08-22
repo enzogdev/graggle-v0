@@ -1,15 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { PayloadAction } from '@reduxjs/toolkit'
-import { Canvas, Color, Pin } from '../types/types';
+import { Color, Pin } from '../types/types';
 
 export interface CanvasState {
-    activeColorElement: Pin | Canvas | null,
+    activeColorElement: Pin | null,
     backgroundColor: Color,
     pins: Pin[];
-    size: {
-        width: number;
-        height: number;
-    };
+    // size: {
+    //     width: number;
+    //     height: number;
+    // };
 }
 
 const initialState: CanvasState = {
@@ -21,10 +21,10 @@ const initialState: CanvasState = {
         alpha: 1
     },
     pins: [],
-    size: {
-        width: 0,
-        height: 0
-    },
+    // size: {
+    //     width: 0,
+    //     height: 0,
+    // },
 }
 
 export const canvasSlice = createSlice({
@@ -47,7 +47,7 @@ export const canvasSlice = createSlice({
             state.pins = state.pins.filter(pin => pin.id !== action.payload);
             state.activeColorElement = null;
         },
-        updateActiveColorElement: (state, action: PayloadAction<Pin | Canvas | null>) => {
+        updateActiveColorElement: (state, action: PayloadAction<Pin | null>) => {
             state.activeColorElement = action.payload;
         },
         updateBackgroundColor: (state, action: PayloadAction<Color>) => {

@@ -1,28 +1,26 @@
 import { useSelector } from "react-redux";
 import { useDraggablePin } from "../../hooks/useDraggablePin";
-import { hslaToRgba } from "../../utils/hslaToRgba";
-import { RootState } from "../../types/types";
-import { isPin } from "../../utils/isPin";
-
-export default function PinComponent() {
-  const pin = useSelector(
-    (state: RootState) => state.canvas.activeColorElement
-  );
-
+import { hslaToRgba } from "../../utils/colorUtils";
+import { Pin, RootState } from "../../types/types";
+import { updateActiveColorElement } from "../../store/canvasSlice";
+export default function PinComponent(pin: Pin) {
   const { handleDragStart, handleDrag, handleDragEnd, handleClick } =
     useDraggablePin(pin);
-  if (!isPin(pin)) {
-    return null; // Render nothing if 'pin' is not of type 'Pin'
-  }
 
-  const rgba = hslaToRgba(pin.color);
-
+  const handleClickActivePin = (e) => {
+    if (e.target != document.getElementById("canvas")) return;
+    e.preventDefault();
+    updateActiveColorElement(pin);
+  };
+  const activePin = useSelector(
+    (state: RootState) => state.canvas.activeColorElement
+  );
   const pinStyle = {
     top: pin.position.y + "%",
     left: pin.position.x + "%",
     translate: `-28% -20%`,
-    backgroundColor: rgba,
-    borderWidth: pin.id === pin.id ? "4px" : "2px", // Note the comparison
+    backgroundColor: hslaToRgba(pin.color),
+    borderWidth: activePin?.id === pin.id ? "4px" : "2px",
   };
 
   return (
@@ -34,7 +32,7 @@ export default function PinComponent() {
       onDragStart={handleDragStart}
       onDrag={handleDrag}
       onDragEnd={handleDragEnd}
-      onClick={handleClick}
+      onClick={handleClickActivePin}
     ></button>
   );
 }
