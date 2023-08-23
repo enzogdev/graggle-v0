@@ -25,7 +25,6 @@ export const canvasSlice = createSlice({
     reducers: {
         createPin: (state, action: PayloadAction<Pin>) => {
             state.pins.push(action.payload)
-            updateActiveColorElement(action.payload)
         },
         updatePin: (state, action: PayloadAction<Pin>) => {
             state.pins = state.pins.map((pin: Pin) => {
