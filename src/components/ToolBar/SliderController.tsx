@@ -1,18 +1,24 @@
-import Slider from "./Slider";
+import { useSelector } from "react-redux";
+import { RootState } from "../../types/types";
+import SliderComponent from "./SliderComponent";
 
 export default function SliderController() {
+  const colorItem = useSelector(
+    (state: RootState) => state.canvas.activeColorElement?.color
+  );
+
   return (
     <div className="rounded-xl bg-white w-full bottom-0 p-5 drop-shadow-xl gap-5 flex flex-col justify-center">
-      <Slider
+      <SliderComponent
         tag={"hue"}
         spectrum={{
           min: 0,
           max: 360,
           step: 1,
         }}
-        value={0}
+        value={colorItem?.hue || 0}
       />
-      <Slider
+      <SliderComponent
         tag={"saturation"}
         spectrum={{
           min: 0,
@@ -20,9 +26,9 @@ export default function SliderController() {
           step: 1,
         }}
         unit={"%"}
-        value={0}
+        value={colorItem?.saturation || 0}
       />
-      <Slider
+      <SliderComponent
         tag={"lightness"}
         spectrum={{
           min: 0,
@@ -30,16 +36,16 @@ export default function SliderController() {
           step: 1,
         }}
         unit={"%"}
-        value={0}
+        value={colorItem?.lightness || 0}
       />
-      <Slider
+      <SliderComponent
         tag={"alpha"}
         spectrum={{
           min: 0,
           max: 1,
           step: 0.01,
         }}
-        value={0}
+        value={colorItem?.alpha || 1}
       />
     </div>
   );

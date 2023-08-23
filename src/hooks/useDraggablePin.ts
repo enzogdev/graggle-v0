@@ -1,16 +1,17 @@
 import { useRef } from "react";
+import { useDispatch } from "react-redux";
 import { deletePinById, updateActiveColorElement, updatePin } from "../store/canvasSlice";
 import { Pin } from "../types/types";
 
 export function useDraggablePin(pin: Pin) {
 
     const lastMousePos = useRef({ x: 0, y: 0 });
-
+    const dispatch = useDispatch();
     const canvas = document.getElementById('canvas');
 
     const handleClick = (e) => {
         e.stopPropagation();
-        updateActiveColorElement(pin);
+        dispatch(updateActiveColorElement(pin));
     };
 
     const calculateNewPosition = (e) => {
@@ -30,8 +31,7 @@ export function useDraggablePin(pin: Pin) {
     const handleDrag = (e) => {
         const { x, y } = calculateNewPosition(e);
         const newPin: Pin = { ...pin, position: { x, y } };
-        updatePin(newPin);
-        console.log({ x, y })
+        dispatch(updatePin(newPin));
         lastMousePos.current = { x: e.clientX, y: e.clientY };
     };
 
@@ -41,10 +41,11 @@ export function useDraggablePin(pin: Pin) {
         const { x, y } = calculateNewPosition(e);
         const newPin: Pin = { ...pin, position: { x, y } };
         if (x < 0 || x > 100 || y < 0 || y > 100) {
-            deletePinById(newPin.id);
+            dispatch(deletePinById(newPin.id));
         } else {
             console.log('actualizado')
-            updatePin(newPin);
+            dispatch(updatePin(newPin));
+            dispatch(updateActiveColorElement(newPin));
         }
     };
 

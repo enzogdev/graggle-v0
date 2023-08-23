@@ -1,20 +1,15 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useDraggablePin } from "../../hooks/useDraggablePin";
 import { hslaToRgba } from "../../utils/colorUtils";
 import { Pin, RootState } from "../../types/types";
-import { updateActiveColorElement } from "../../store/canvasSlice";
 export default function PinComponent(pin: Pin) {
   const { handleDragStart, handleDrag, handleDragEnd, handleClick } =
     useDraggablePin(pin);
 
-  const handleClickActivePin = (e) => {
-    if (e.target != document.getElementById("canvas")) return;
-    e.preventDefault();
-    updateActiveColorElement(pin);
-  };
   const activePin = useSelector(
     (state: RootState) => state.canvas.activeColorElement
   );
+
   const pinStyle = {
     top: pin.position.y + "%",
     left: pin.position.x + "%",
@@ -32,7 +27,7 @@ export default function PinComponent(pin: Pin) {
       onDragStart={handleDragStart}
       onDrag={handleDrag}
       onDragEnd={handleDragEnd}
-      onClick={handleClickActivePin}
+      onClick={handleClick}
     ></button>
   );
 }

@@ -6,10 +6,6 @@ export interface CanvasState {
     activeColorElement: Pin | null,
     backgroundColor: Color,
     pins: Pin[];
-    // size: {
-    //     width: number;
-    //     height: number;
-    // };
 }
 
 const initialState: CanvasState = {
@@ -21,10 +17,6 @@ const initialState: CanvasState = {
         alpha: 1
     },
     pins: [],
-    // size: {
-    //     width: 0,
-    //     height: 0,
-    // },
 }
 
 export const canvasSlice = createSlice({
