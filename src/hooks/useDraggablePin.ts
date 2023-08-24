@@ -43,9 +43,8 @@ export function useDraggablePin(pin: Pin) {
         if (x < 0 || x > 100 || y < 0 || y > 100) {
             dispatch(deletePinById(newPin.id));
         } else {
-            console.log('actualizado')
-            dispatch(updatePin(newPin));
             dispatch(updateActiveColorElement(newPin));
+            dispatch(updatePin(newPin));
         }
     };
 

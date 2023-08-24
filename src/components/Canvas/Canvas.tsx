@@ -12,7 +12,7 @@ export default function Canvas() {
 
   const onClickNewPin = (e) => {
     if (e.target != document.getElementById("canvas")) return;
-    
+
     const canvasSize = {
       width: e.target.clientWidth,
       height: e.target.clientHeight,

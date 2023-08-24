@@ -9,14 +9,13 @@ export default function SliderComponent({ tag, spectrum }: Slider) {
   );
   const dispatch = useDispatch();
 
-  // Si activePin es nulo, el componente no renderizará nada
   const [value, setValue] = useState(activePin?.color[tag] || 0);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const newValue = parseFloat(e.target.value);
     setValue(newValue);
-    // Crear una copia actualizada del objeto activePin
-    const newColorElement = {
+
+    const newPin = {
       ...activePin,
       color: {
         ...activePin?.color,
@@ -24,7 +23,7 @@ export default function SliderComponent({ tag, spectrum }: Slider) {
       },
     };
 
-    dispatch(updatePin(newColorElement));
+    dispatch(updatePin(newPin));
   };
 
   useEffect(() => {
@@ -32,22 +31,24 @@ export default function SliderComponent({ tag, spectrum }: Slider) {
   }, [activePin, tag]);
 
   return (
-    <div className="relative flex gap-5 items-center justify-end">
-      <span className="text-gray-400 text-2xl font-thin unselectable">
-        {tag[0]}
-      </span>
+    <div className="relative flex flex-col gap-2 items-center justify-end">
+      <div className="flex justify-between w-full">
+        <span className="text-gray-400 text-xl font-thin unselectable">
+          {tag}
+        </span>
+        <input
+          type="number"
+          className="font-mono text-xl font-thin w-[3em] text-gray-700 bg-transparent outline-none border-b-2 border-[#d1d1d1]"
+          min={spectrum.min}
+          max={spectrum.max}
+          value={value || 0}
+          onChange={handleInputChange}
+        />
+      </div>
       <input
         className="rounded-lg overflow-hidden appearance-none bg-gray-200 w-full"
         type="range"
         step={spectrum.step}
-        min={spectrum.min}
-        max={spectrum.max}
-        value={value || 0}
-        onChange={handleInputChange}
-      />
-      <input
-        type="number"
-        className="font-mono text-2xl font-thin w-[56px] text-gray-700 bg-transparent outline-none border-b-2 border-[#d1d1d1]"
         min={spectrum.min}
         max={spectrum.max}
         value={value || 0}

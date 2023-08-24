@@ -43,6 +43,9 @@ export const canvasSlice = createSlice({
         },
         updateBackgroundColor: (state, action: PayloadAction<Color>) => {
             state.backgroundColor = action.payload;
+        },
+        updatePinOrder: (state, action: PayloadAction<Pin[]>) => {
+            state.pins = action.payload;
         }
     }
 })
@@ -53,4 +56,5 @@ export const {
     deletePinById,
     updateActiveColorElement,
     updateBackgroundColor,
+    updatePinOrder
 } = canvasSlice.actions;
