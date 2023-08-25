@@ -8,7 +8,7 @@ export default function SliderController() {
   );
 
   return (
-    <div className="rounded-xl bg-white w-[2/3] min-w-[250px] bottom-0 p-5 drop-shadow-xl gap-5 flex flex-col justify-center">
+    <div className="rounded-xl dark:bg-gray-700 bg-white w-[2/3] min-w-[250px] bottom-0 p-5 drop-shadow-xl gap-5 flex flex-col justify-center">
       <SliderComponent
         tag={"hue"}
         spectrum={{

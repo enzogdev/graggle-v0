@@ -11,8 +11,8 @@ function App() {
   return (
     <>
       <Header />
-      <div className="flex flex-row gap-9 self-stretch h-full">
-        <div className="flex flex-col gap-4">
+      <div className="flex flex-row gap-9 w-full h-full">
+        <div className="flex flex-col gap-4 h-full">
           <SliderController />
           <PinList />
           <Toolbar />

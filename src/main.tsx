@@ -5,7 +5,12 @@ import "./index.css";
 import store from "./store/store.ts";
 import { Provider } from "react-redux";
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
+const rootElement = document.getElementById("root");
+if (rootElement) {
+  rootElement.classList.add("dark:bg-gray-900");
+}
+
+ReactDOM.createRoot(rootElement!).render(
   <React.StrictMode>
     <Provider store={store}>
       <App />

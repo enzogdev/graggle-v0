@@ -36,7 +36,7 @@ export default function SliderComponent({ tag, spectrum }: Slider) {
         {tag[0]}
       </span>
       <input
-        className="rounded-lg overflow-hidden appearance-none bg-gray-200 w-full"
+        className="rounded-lg overflow-hidden appearance-none bg-gray-200 dark:bg-gray-800 w-full"
         type="range"
         step={spectrum.step}
         min={spectrum.min}
@@ -46,7 +46,7 @@ export default function SliderComponent({ tag, spectrum }: Slider) {
       />
       <input
         type="number"
-        className=" outline-0 font-mono text-sm lg:text-lg font-thin w-[5em] text-gray-700 bg-transparent outline-none border-b-2 border-[#d1d1d1]"
+        className=" outline-0 font-mono dark:text-gray-400 text-sm lg:text-lg font-thin w-[5em] text-gray-700 bg-transparent outline-none border-b-2 border-[#d1d1d1] dark:border-slate-600"
         min={spectrum.min}
         max={spectrum.max}
         value={value || 0}

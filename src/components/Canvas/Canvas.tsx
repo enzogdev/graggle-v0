@@ -41,7 +41,7 @@ export default function Canvas() {
   return (
     <div
       id="canvas"
-      className="canvas w-full bg-white h-full relative rounded-xl drop-shadow-xl"
+      className="canvas w-full bg-white h-full relative rounded-xl drop-shadow-xl dark:bg-gray-700"
       style={{ backgroundImage: backgroundColor }}
       onClick={(e) => onClickNewPin(e)}
     >

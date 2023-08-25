@@ -29,7 +29,7 @@ export default function PinList() {
     dispatch(updatePinOrder(reorderedPins));
   };
   return (
-    <ul className="rounded-xl bg-white w-full p-5 drop-shadow-xl gap-5 flex flex-col overflow-y-scroll h-[380px]">
+    <ul className="dark:bg-gray-700 rounded-xl bg-white w-full p-5 drop-shadow-xl gap-5 flex flex-col overflow-y-scroll h-[300px]">
       {pins.map((pin, index) => (
         <li
           key={pin.id}
@@ -44,7 +44,7 @@ export default function PinList() {
               className="w-10 h-10 rounded-l-lg"
               style={{ backgroundColor: hslaToRgba(pin.color) }}
             ></div>
-            <div className="p-2 text-xs h-full w-full flex items-center rounded-r-lg bg-slate-50 hover:bg-slate-100 ">
+            <div className="p-2 text-xs h-full w-full flex items-center rounded-r-lg bg-slate-50 dark:bg-gray-800 dark:text-gray-100 dark:hover:bg-gray-600 hover:bg-slate-100 ">
               {hslaToRgba(pin.color)}
             </div>
           </div>
