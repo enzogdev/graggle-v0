@@ -31,24 +31,22 @@ export default function SliderComponent({ tag, spectrum }: Slider) {
   }, [activePin, tag]);
 
   return (
-    <div className="relative flex flex-col gap-2 items-center justify-end">
-      <div className="flex justify-between w-full">
-        <span className="text-gray-400 text-xl font-thin unselectable">
-          {tag}
-        </span>
-        <input
-          type="number"
-          className="font-mono text-xl font-thin w-[3em] text-gray-700 bg-transparent outline-none border-b-2 border-[#d1d1d1]"
-          min={spectrum.min}
-          max={spectrum.max}
-          value={value || 0}
-          onChange={handleInputChange}
-        />
-      </div>
+    <div className="relative flex flex-row gap-2 items-center justify-end">
+      <span className="text-gray-400 text-sm lg:text-lg font-thin unselectable w-[1em] overflow-hidden">
+        {tag[0]}
+      </span>
       <input
         className="rounded-lg overflow-hidden appearance-none bg-gray-200 w-full"
         type="range"
         step={spectrum.step}
+        min={spectrum.min}
+        max={spectrum.max}
+        value={value || 0}
+        onChange={handleInputChange}
+      />
+      <input
+        type="number"
+        className=" outline-0 font-mono text-sm lg:text-lg font-thin w-[5em] text-gray-700 bg-transparent outline-none border-b-2 border-[#d1d1d1]"
         min={spectrum.min}
         max={spectrum.max}
         value={value || 0}

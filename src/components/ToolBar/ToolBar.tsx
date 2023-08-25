@@ -24,7 +24,7 @@ export default function Toolbar() {
     },
   ];
   return (
-    <div className="flex flex-row items-center gap-5 self-stretch">
+    <div className="flex flex-row items-end gap-4 self-end mt-5">
       {actions.map((action) => (
         <ButtonTool key={action.text} {...action} />
       ))}
