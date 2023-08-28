@@ -38,6 +38,7 @@ export default function Canvas() {
     dispatch(createPin(newPin));
     dispatch(updateActiveColorElement(newPin));
   };
+
   return (
     <div
       id="canvas"

@@ -29,7 +29,7 @@ export default function PinList() {
     dispatch(updatePinOrder(reorderedPins));
   };
   return (
-    <ul className="rounded-xl bg-white w-full p-5 drop-shadow-xl gap-5 flex flex-col overflow-y-scroll grow dark:bg-gray-600">
+    <ul className="rounded-xl bg-white w-full p-5 drop-shadow-xl gap-5 flex flex-col overflow-y-scroll grow dark:bg-gray-700">
       {pins.map((pin, index) => (
         <li
           key={pin.id}

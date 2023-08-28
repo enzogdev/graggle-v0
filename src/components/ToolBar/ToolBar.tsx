@@ -1,33 +1,25 @@
 import ButtonTool from "./ButtonTool";
+import visibleIcon from "/icons/view.svg";
+import hiddeIcon from "/icons/hide-3.svg";
+import { useState } from "react";
+import { toggleOpacityPins } from "./PaletteActions/togglePinsInCanvas";
 
 export default function Toolbar() {
-  const actions = [
-    {
-      icon: "format-color-fill",
-      text: "canvas background",
-      background: "",
-    },
-    {
-      icon: "fullscreen",
-      text: "full screen",
-      background: "",
-    },
-    {
-      icon: "copy",
-      text: "copy code",
-      background: "",
-    },
-    {
-      icon: "save",
-      text: "save",
-      background: "",
-    },
-  ];
+  const [isPinVisible, setIsPinVisible] = useState(true);
+
+  const handleToggleVisible = () => {
+    setIsPinVisible(isPinVisible ? false : true);
+    toggleOpacityPins(isPinVisible);
+  };
+
   return (
     <div className="flex flex-row items-end gap-4 self-end mt-5">
-      {actions.map((action) => (
-        <ButtonTool key={action.text} {...action} />
-      ))}
+      <ButtonTool
+        onClick={handleToggleVisible}
+        icon={
+          <img src={isPinVisible ? visibleIcon : hiddeIcon} alt="Toggle Pins" />
+        }
+      />
     </div>
   );
 }

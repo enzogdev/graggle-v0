@@ -22,7 +22,7 @@ export default function PinComponent(pin: Pin) {
     <button
       key={pin.id}
       draggable
-      className="h-5 w-5 absolute border-solid border-2 border-slate-100 rounded-full shadow-inner hover:scale-125 transition-transform"
+      className="pin h-5 w-5 absolute border-solid border-2 border-slate-100 rounded-full shadow-inner hover:scale-125 transition-transform"
       style={pinStyle}
       onDragStart={handleDragStart}
       onDrag={handleDrag}

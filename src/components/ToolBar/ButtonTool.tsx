@@ -1,15 +1,10 @@
-import Image from "next/image";
-
-export default function ButtonTool(action: {
-  icon: string;
-  text: string | undefined;
-}) {
+export default function ButtonTool({ onClick, icon }) {
   return (
     <button
       className="w-14 h-14 bg-white rounded-lg drop-shadow-lg flex justify-center items-center hover:drop-shadow-xl hover:-translate-y-2 transition-all"
-      //   onClick={handleClick}
+      onClick={onClick}
     >
-      {/* <Image src={`./${action.icon}.svg`} alt={""} /> */}
+      {icon}
     </button>
   );
 }
