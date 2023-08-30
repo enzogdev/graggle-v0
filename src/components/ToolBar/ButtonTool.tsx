@@ -1,7 +1,7 @@
 export default function ButtonTool({ onClick, icon }) {
   return (
     <button
-      className="w-14 h-14 bg-white rounded-lg drop-shadow-lg flex justify-center items-center hover:drop-shadow-xl hover:-translate-y-2 transition-all"
+      className="w-14 h-14 bg-white dark:bg-gray-500 hover:bg-gray-100 rounded-lg drop-shadow-lg flex justify-center items-center dark:hover:bg-gray-400 transition-all"
       onClick={onClick}
     >
       {icon}

@@ -23,6 +23,9 @@ export default function Toolbar() {
     const code = pinsToCss(pins);
     navigator.clipboard.writeText(code);
   };
+  const svgStyles = {
+    fill: "blue",
+  };
 
   return (
     <div className="flex flex-row items-end gap-4 self-end mt-5">
@@ -34,7 +37,9 @@ export default function Toolbar() {
       />
       <ButtonTool
         onClick={handleCopyCodeToClipboard}
-        icon={<img src={codeIcon} alt="Copy code to clipboard" />}
+        icon={
+          <img style={svgStyles} src={codeIcon} alt="Copy code to clipboard" />
+        }
       />
       <AspectRatioSelector />
     </div>
