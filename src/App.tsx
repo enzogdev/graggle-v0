@@ -11,13 +11,13 @@ function App() {
   return (
     <>
       <Header />
-      <div className="flex flex-row gap-9 w-full h-full overflow-auto py-6 px-2">
+      <div className="flex flex-row gap-9 w-full h-full overflow-auto py-6 px-0">
         <div className="flex flex-col gap-4 h-full z-10">
           <SliderController />
           <PinList />
           <Toolbar />
         </div>
-        <div className="w-full h-full flex justify-center items-center overflow-hidden">
+        <div className="w-full h-full flex justify-center items-center overflow-hidden p-5">
           <Canvas />
         </div>
       </div>
