@@ -1,11 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { PayloadAction } from '@reduxjs/toolkit'
-import { Color, Pin } from '../types/types';
+import { AspectRatio, Color, Pin } from '../types/types';
 
 export interface CanvasState {
     activeColorElement: Pin | null,
     backgroundColor: Color,
-    pins: Pin[];
+    pins: Pin[],
+    aspectRatio: AspectRatio
 }
 
 const initialState: CanvasState = {
@@ -17,6 +18,11 @@ const initialState: CanvasState = {
         alpha: 1
     },
     pins: [],
+    aspectRatio: {
+        ratio: "responsive",
+        orientation: "",
+        tailwindClass: "h-full w-full",
+    },
 }
 
 export const canvasSlice = createSlice({
@@ -46,6 +52,9 @@ export const canvasSlice = createSlice({
         },
         updatePinOrder: (state, action: PayloadAction<Pin[]>) => {
             state.pins = action.payload;
+        },
+        updateAspectRatio: (state, action: PayloadAction<AspectRatio>) => {
+            state.aspectRatio = action.payload;
         }
     }
 })
@@ -56,5 +65,6 @@ export const {
     deletePinById,
     updateActiveColorElement,
     updateBackgroundColor,
-    updatePinOrder
+    updatePinOrder,
+    updateAspectRatio
 } = canvasSlice.actions;

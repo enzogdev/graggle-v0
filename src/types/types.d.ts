@@ -37,3 +37,9 @@ type RootState = {
     canvas: CanvasState; // Supongo que tienes un slice llamado 'canvas'
     // Otros slices y propiedades del estado
 };
+
+type AspectRatio = {
+    ratio: string,
+    orientation: 'landscape' | 'portrait' | 'square' | '',
+    tailwindClass: string
+}

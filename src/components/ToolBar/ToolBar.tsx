@@ -2,11 +2,13 @@ import ButtonTool from "./ButtonTool";
 import visibleIcon from "/icons/view.svg";
 import hiddeIcon from "/icons/hide-3.svg";
 import codeIcon from "/icons/code.svg";
+import aspectRatioIcon from "/icons/aspect-ratio.svg";
 import { useState } from "react";
 import { toggleOpacityPins } from "./PaletteActions/togglePinsInCanvas";
 import { RootState } from "../../types/types";
 import { pinsToCss } from "../../utils/colorUtils";
 import { useSelector } from "react-redux";
+import { AspectRatioSelector } from "./PaletteActions/aspectRatioSelector";
 
 export default function Toolbar() {
   const [isPinVisible, setIsPinVisible] = useState(true);
@@ -14,19 +16,12 @@ export default function Toolbar() {
 
   const handleToggleVisible = () => {
     setIsPinVisible(isPinVisible ? false : true);
-    toggleOpacityPins(isPinVisible);
+    toggleOpacityPins(!isPinVisible);
   };
 
   const handleCopyCodeToClipboard = () => {
     const code = pinsToCss(pins);
-    navigator.clipboard
-      .writeText(code)
-      .then(() => {
-        console.log("Código copiado al portapapeles exitosamente");
-      })
-      .catch((error) => {
-        console.error("No se pudo copiar el código: ", error);
-      });
+    navigator.clipboard.writeText(code);
   };
 
   return (
@@ -41,6 +36,7 @@ export default function Toolbar() {
         onClick={handleCopyCodeToClipboard}
         icon={<img src={codeIcon} alt="Copy code to clipboard" />}
       />
+      <AspectRatioSelector />
     </div>
   );
 }

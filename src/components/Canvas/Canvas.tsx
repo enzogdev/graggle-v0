@@ -1,4 +1,8 @@
-import { createPin, updateActiveColorElement } from "../../store/canvasSlice";
+import {
+  createPin,
+  updateActiveColorElement,
+  updateAspectRatio,
+} from "../../store/canvasSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { Pin, RootState } from "../../types/types";
 import PinComponent from "./PinComponent";
@@ -8,6 +12,7 @@ import { pinsToCss } from "../../utils/colorUtils";
 export default function Canvas() {
   const dispatch = useDispatch();
   const { pins } = useSelector((state: RootState) => state.canvas);
+  const { aspectRatio } = useSelector((state: RootState) => state.canvas);
   const backgroundColor = pinsToCss(pins);
 
   const onClickNewPin = (e) => {
@@ -39,10 +44,14 @@ export default function Canvas() {
     dispatch(updateActiveColorElement(newPin));
   };
 
+  const canvasClasses =
+    "canvas bg-white relative rounded-xl drop-shadow-xl dark:bg-gray-700 transition-all " +
+    aspectRatio.tailwindClass;
+
   return (
     <div
       id="canvas"
-      className="canvas w-full bg-white h-full relative rounded-xl drop-shadow-xl dark:bg-gray-700"
+      className={canvasClasses}
       style={{ backgroundImage: backgroundColor }}
       onClick={(e) => onClickNewPin(e)}
     >
