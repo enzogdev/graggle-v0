@@ -35,7 +35,7 @@ export function useDraggablePin(pin: Pin) {
         lastMousePos.current = { x: e.clientX, y: e.clientY };
     };
 
-    const handleDragEnd = (e: { stopPropagation: () => void; }) => {
+    const handleDragEnd = (e: React.DragEvent<HTMLButtonElement>) => {
         e.stopPropagation();
 
         const { x, y } = calculateNewPosition(e);
@@ -47,6 +47,7 @@ export function useDraggablePin(pin: Pin) {
             dispatch(updatePin(newPin));
         }
     };
+
 
     return {
         handleDragStart,

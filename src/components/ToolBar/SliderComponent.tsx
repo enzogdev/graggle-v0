@@ -15,6 +15,8 @@ export default function SliderComponent({ tag, spectrum }: Slider) {
     const newValue = parseFloat(e.target.value);
     setValue(newValue);
 
+    if (!activePin) return;
+
     const newPin = {
       ...activePin,
       color: {

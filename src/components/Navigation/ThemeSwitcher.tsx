@@ -3,12 +3,12 @@ import useDarkTheme from "../../hooks/useDarkTheme";
 
 export default function ThemeSwitcher() {
   const [colorTheme, setTheme] = useDarkTheme();
-  const [darkTheme, setDarkTheme] = useState(colorTheme === "light");
+  const [darkTheme, setDarkTheme] = useState(colorTheme === "dark");
 
   const toggleDarkMode = () => {
     const newTheme = darkTheme ? "light" : "dark";
-    setTheme(newTheme);
-    setDarkTheme(!darkTheme);
+    (setTheme as React.Dispatch<React.SetStateAction<string>>)(newTheme); // Type assertion here
+    setDarkTheme(newTheme === "dark");
   };
 
   return (
