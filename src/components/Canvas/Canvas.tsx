@@ -1,8 +1,4 @@
-import {
-  createPin,
-  updateActiveColorElement,
-  updateAspectRatio,
-} from "../../store/canvasSlice";
+import { createPin, updateActiveColorElement } from "../../store/canvasSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { Pin, RootState } from "../../types/types";
 import PinComponent from "./PinComponent";
@@ -15,7 +11,7 @@ export default function Canvas() {
   const { aspectRatio } = useSelector((state: RootState) => state.canvas);
   const backgroundColor = pinsToCss(pins);
 
-  const onClickNewPin = (e) => {
+  const onClickNewPin = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if (e.target != document.getElementById("canvas")) return;
 
     const canvasSize = {

@@ -1,4 +1,4 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { useDraggablePin } from "../../hooks/useDraggablePin";
 import { hslaToRgba } from "../../utils/colorUtils";
 import { Pin, RootState } from "../../types/types";

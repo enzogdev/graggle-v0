@@ -9,12 +9,12 @@ export function useDraggablePin(pin: Pin) {
     const dispatch = useDispatch();
     const canvas = document.getElementById('canvas');
 
-    const handleClick = (e) => {
+    const handleClick = (e: { stopPropagation: () => void; }) => {
         e.stopPropagation();
         dispatch(updateActiveColorElement(pin));
     };
 
-    const calculateNewPosition = (e) => {
+    const calculateNewPosition = (e: { clientX: number; clientY: number; }) => {
         if (!canvas) return { x: 0, y: 0 };
 
         const deltaX = e.clientX - lastMousePos.current.x;
@@ -24,18 +24,18 @@ export function useDraggablePin(pin: Pin) {
         return { x: parseFloat(newX), y: parseFloat(newY) };
     };
 
-    const handleDragStart = (e) => {
+    const handleDragStart = (e: { clientX: any; clientY: any; }) => {
         lastMousePos.current = { x: e.clientX, y: e.clientY };
     };
 
-    const handleDrag = (e) => {
+    const handleDrag = (e: { clientX: any; clientY: any; }) => {
         const { x, y } = calculateNewPosition(e);
         const newPin: Pin = { ...pin, position: { x, y } };
         dispatch(updatePin(newPin));
         lastMousePos.current = { x: e.clientX, y: e.clientY };
     };
 
-    const handleDragEnd = (e) => {
+    const handleDragEnd = (e: { stopPropagation: () => void; }) => {
         e.stopPropagation();
 
         const { x, y } = calculateNewPosition(e);
