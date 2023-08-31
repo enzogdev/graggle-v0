@@ -2,7 +2,6 @@ import ButtonTool from "./ButtonTool";
 import visibleIcon from "/icons/view.svg";
 import hiddeIcon from "/icons/hide-3.svg";
 import codeIcon from "/icons/code.svg";
-import aspectRatioIcon from "/icons/aspect-ratio.svg";
 import { useState } from "react";
 import { toggleOpacityPins } from "./PaletteActions/togglePinsInCanvas";
 import { RootState } from "../../types/types";

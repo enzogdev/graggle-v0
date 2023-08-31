@@ -2,23 +2,24 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../types/types";
 import { hslaToRgba } from "../../utils/colorUtils";
 import { updatePinOrder } from "../../store/canvasSlice";
+import { DragEvent } from "react";
 
 export default function PinList() {
   const dispatch = useDispatch();
   const { pins } = useSelector((state: RootState) => state.canvas);
 
-  const handleDragStart = (e, index) => {
-    e.dataTransfer.setData("text/plain", index);
+  const handleDragStart = (e: DragEvent<HTMLLIElement>, index: number) => {
+    e.dataTransfer.setData("text/plain", index.toString());
   };
 
-  const handleDragOver = (e) => {
+  const handleDragOver = (e: { preventDefault: () => void }) => {
     e.preventDefault();
   };
 
-  const handleDrop = (e, targetIndex) => {
+  const handleDrop = (e: DragEvent<HTMLLIElement>, targetIndex: number) => {
     e.preventDefault();
 
-    const sourceIndex = e.dataTransfer.getData("text/plain");
+    const sourceIndex = parseInt(e.dataTransfer.getData("text/plain"));
 
     // Move the item from sourceIndex to targetIndex
     const reorderedPins = [...pins];

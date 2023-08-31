@@ -12,11 +12,12 @@ export default function Canvas() {
   const backgroundColor = pinsToCss(pins);
 
   const onClickNewPin = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    if (e.target != document.getElementById("canvas")) return;
+    const canvasElement = e.target as HTMLDivElement;
+    if (canvasElement.id !== "canvas") return;
 
     const canvasSize = {
-      width: e.target.clientWidth,
-      height: e.target.clientHeight,
+      width: canvasElement.clientWidth,
+      height: canvasElement.clientHeight,
     };
     const position = {
       x: Math.floor((e.nativeEvent.offsetX / canvasSize.width) * 100),

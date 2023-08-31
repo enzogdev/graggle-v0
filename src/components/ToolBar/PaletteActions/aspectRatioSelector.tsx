@@ -13,12 +13,12 @@ export function AspectRatioSelector() {
     setIsOpen(!isOpen);
   };
   const dispatch = useDispatch();
-  const menuRef = useRef(null);
+  const menuRef = useRef<HTMLDivElement | null>(null);
   const handleCanvasAspectRatio = (aspectRatio: AspectRatio) => {
     dispatch(updateAspectRatio(aspectRatio));
   };
 
-  const handleClickOutside = (event) => {
+  const handleClickOutside = (event: { target: any }) => {
     if (menuRef.current && !menuRef.current.contains(event.target)) {
       setIsOpen(false);
     }
