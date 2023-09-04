@@ -1,7 +1,7 @@
 import { createRoot } from "react-dom/client";
 
 export function Onboarding() {
-  const handleCloseOnboarding = (e) => {
+  const handleCloseOnboarding = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     const elementoEliminar = document.getElementById("onboarding");
 
