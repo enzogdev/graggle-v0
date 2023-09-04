@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 export default function useDarkTheme() {
+
     const storedTheme = localStorage.getItem('theme');
     const initialTheme = storedTheme || 'light';
     const [theme, setTheme] = useState<string>(initialTheme);
