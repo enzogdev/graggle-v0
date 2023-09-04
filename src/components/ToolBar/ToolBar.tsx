@@ -2,14 +2,13 @@ import ButtonTool from "./ButtonTool";
 import visibleIcon from "/icons/view.svg";
 import hiddeIcon from "/icons/hide-3.svg";
 import codeIcon from "/icons/code.svg";
+import bgColor from "/icons/bucket-color.svg";
 import { useState } from "react";
 import { RootState } from "../../types/types";
 import { pinsToCss } from "../../utils/colorUtils";
 import { useSelector } from "react-redux";
 import { AspectRatioSelector } from "./AspectRatioSelector";
-import ReactDOM from "react-dom";
-import Toast, { launchToast } from "./Toast";
-import { createRoot } from "react-dom/client";
+import { launchToast } from "./Toast";
 
 export default function Toolbar() {
   const [isPinVisible, setIsPinVisible] = useState(true);
@@ -43,6 +42,9 @@ export default function Toolbar() {
         launchToast("fail", "Algo salió mal", 3000);
       });
   };
+  const handleCanvasBgColor = () => {
+    console.log("jeje");
+  };
 
   return (
     <div className="flex flex-row items-end gap-4 self-end mt-5">
@@ -57,6 +59,10 @@ export default function Toolbar() {
         icon={<img src={codeIcon} alt="Copy code to clipboard" />}
       />
       <AspectRatioSelector />
+      <ButtonTool
+        onClick={handleCanvasBgColor}
+        icon={<img src={bgColor} alt="Change canvas bg color" />}
+      />
     </div>
   );
 }
