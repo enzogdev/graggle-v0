@@ -16,6 +16,15 @@ type Color = {
     lightness: number;
     alpha: number;
 }
+type Color2 = {
+    red: number,
+    green: number,
+    blue: number,
+    hue: number;
+    saturation: number;
+    lightness: number;
+    alpha: number;
+}
 
 type Position = {
     x: number;
