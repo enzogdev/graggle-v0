@@ -3,11 +3,11 @@ import { RootState } from "../../../types/types";
 import { useEffect, useState } from "react";
 
 export default function SelectorPicker() {
-  const hue = useSelector(
-    (state: RootState) => state.canvas.activeColorElement?.color.hue
+  const item = useSelector(
+    (state: RootState) => state.canvas.activeColorElement
   );
 
-  const [value, setValue] = useState(hue || 0);
+  const [value, setValue] = useState(item?.color.hue || 0);
   const backgroundPicking = {
     background: `linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, #000 100%),linear-gradient(90deg, #FFF 0%, rgba(255, 255, 255, 0.00) 100%),hsl(${value}, 100%, 50%)`,
     minHeight: "150px",
@@ -24,8 +24,8 @@ export default function SelectorPicker() {
   };
 
   useEffect(() => {
-    setValue(hue || 0);
-  }, [hue]);
+    setValue(item?.color.hue || 0);
+  }, [item]);
   return (
     <div
       id="picking_area"

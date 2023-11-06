@@ -5,7 +5,7 @@ import Canvas from "./components/Canvas/Canvas";
 import Footer from "./components/Navigation/Footer";
 import PinList from "./components/ToolBar/PinList";
 import Toolbar from "./components/ToolBar/ToolBar";
-import PickingComponent from "./components/ToolBar/ColorSelector/PickingComponent";
+import PickingWidget from "./components/ToolBar/ColorSelector/PickingWidget";
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
         <div className="flex flex-col gap-4 h-full z-10">
           {/* <SliderController /> */}
           <Header />
-          <PickingComponent />
+          <PickingWidget />
           <PinList />
           <Toolbar />
           <Footer />

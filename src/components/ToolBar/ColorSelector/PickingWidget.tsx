@@ -4,7 +4,7 @@ import SelectorHue from "./SelectorHue";
 import SelectorPicker from "./SelectorPicker";
 import { RootState } from "../../../types/types";
 
-export default function PickingComponent() {
+export default function PickingWidget() {
   const colorItem = useSelector(
     (state: RootState) => state.canvas.activeColorElement?.color
   );
