@@ -25,7 +25,7 @@ export default function SelectorAlpha() {
     }
   };
   const backgroundAlpha = {
-    background: `url("src/assets/Alpha Mask.png"),#F00`,
+    background: `url("alpha-mask.png"),#F00`,
     backgroundSize: "cover",
   };
   return (
