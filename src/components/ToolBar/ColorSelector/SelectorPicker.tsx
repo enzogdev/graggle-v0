@@ -13,15 +13,15 @@ export default function SelectorPicker() {
     cursorPosition: { top: 0, left: 0 },
   });
 
-  const containerRef = useRef(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
-  const handleDragStart = (e) => {
+  const handleDragStart = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     document.addEventListener("mousemove", handleDrag);
     document.addEventListener("mouseup", handleDragEnd);
   };
 
-  const handleDrag = (e) => {
+  const handleDrag = (e: { clientX: number; clientY: number }) => {
     if (!containerRef.current) return;
 
     const containerRect = containerRef.current.getBoundingClientRect();
